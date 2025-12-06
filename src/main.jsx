@@ -1,8 +1,7 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-
+import GroupDetails from './components/GroupDetails.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,11 +11,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        index: true,
+        element:  <GroupDetails/>,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
 )
